@@ -1,39 +1,56 @@
-# Capstone_Project_ML_Bike-sharing-prediction
-Problem Statement
-Currently Rental bikes are introduced in many urban cities for the enhancement of mobility comfort. It is important to make the rental bike available and accessible to the public at the right time as it lessens the waiting time. Eventually, providing the city with a stable supply of rental bikes becomes a major concern. The crucial part is the prediction of bike count required at each hour for the stable supply of rental bikes.
+# Bike Sharing Demand Prediction
 
-Describing DataSet
-The dataset contains weather information (Temperature, Humidity, Windspeed, Visibility, Dewpoint, Solar radiation, Snowfall, Rainfall), the number of bikes rented per hour and date information.
+## Overview
+Forecasting bike demand is a common problem for bike rental companies, as accurate predictions can help optimize inventory and pricing strategies. This project aims to develop a regression-based machine learning model to predict bicycle demand over time.
 
-Attribute Information:
-Date : year-month-day
-Rented_Bike_Count - Count of bikes rented at each hour
-Hour - Hour of he day
-Temperature-Temperature in Celsius
-Humidity - %
-Windspeed - m/s
-Visibility - 10m
-Dew point temperature - Celsius
-Solar radiation - MJ/m2
-Rainfall - mm
-Snowfall - cm
-Seasons - Winter, Spring, Summer, Autumn
-Holiday - Holiday/No holiday
-Functional Day - NoFunc(Non Functional Hours), Fun(Functional hours)
+The dataset includes bicycle rental data from a bike-sharing company, featuring the number of bicycles rented, rental times and dates, weather conditions, seasonal characteristics, and other factors that may influence bicycle demand, such as holidays and weekdays.
 
-Algorithms for Model Training
-A model defines the relationship between features and label.A feature is an input variable—the x variable in simple linear regression.A label is the thing we're predicting—the y variable in simple linear regression.Training means creating or learning the model.In order to build the predictive model, it's time to implement some of the model training on the above selected feature.
-Following algorithms have been used for predictions:-
+## Problem Statement
+Currently, rental bikes are introduced in many urban cities to enhance mobility comfort. It is crucial to make rental bikes available and accessible to the public at the right time to minimize waiting times. Therefore, predicting the bike count required each hour is essential for ensuring a stable supply of rental bikes.
 
-Linear Regression
-Lasso Regression
-Ridge Regression
-KNeighborsRegressor
-Random Forest Regression
+## Dataset Information
+- **Date**: Year-month-day
+- **Rented_Bike_Count**: Count of bikes rented each hour
+- **Hour**: Hour of the day
+- **Temperature**: Temperature in Celsius
+- **Humidity**: Percentage humidity
+- **Windspeed**: Windspeed in m/s
+- **Visibility**: Visibility in 10m units
+- **Dew point temperature**: Dew point temperature in Celsius
+- **Solar radiation**: Solar radiation in MJ/m²
+- **Rainfall**: Rainfall in mm
+- **Snowfall**: Snowfall in cm
+- **Seasons**: Winter, Spring, Summer, Autumn
+- **Holiday**: Holiday/No holiday
+- **Functional Day**: Non-functional hours (NoFunc) or functional hours (Fun)
 
-Boosting
-Boosting is a method used in machine learning to reduce errors in predictive data analysis.Boosting improves machine models' predictive accuracy and performance by converting multiple weak learners into a single strong learning model. Machine learning models can be weak learners(have low prediction accuracy, similar to random guessing,prone to overfitting) or strong learners(higher prediction accuracy). Boosting converts a system of weak learners into a single strong learning system. There are many boosting algorithms which impart additional boost to model’s accuracy:
+## Methodology
+1. **Data Preprocessing**:
+   - Cleaned and preprocessed the data, handling null values and outliers.
+   - Split the data into training and test sets.
 
-GradientBoostingRegressor - aggregates the results of each decision tree along the way to calculate the final result
-XGB Regressor - provides parallel tree boosting,trees grow depth-wise
-Light-BGM - trees grow leaf-wise
+2. **Model Training**:
+   - Tried several model architectures and hyperparameter settings.
+   - Chose the best-performing model based on test data results.
+
+3. **Performance Evaluation**:
+   - Used metrics like mean absolute error, squared error, and R-squared.
+   - The final model achieved an R-squared value of 0.88 and an average absolute error of 2.58.
+
+4. **Ablation Studies**:
+   - Assessed the impact of individual features on model performance.
+   - Found that temperature, weather, and seasonal changes significantly affect bicycle demand.
+
+## Conclusion
+- A Gradient Boosting model with GridSearchCV showed promising results with an R² score of 0.91.
+- Key factors driving bike rental demand include temperature, functioning days, humidity, rainfall, and solar radiation.
+- Bike demand peaks around 8-9 AM and 6-7 PM.
+- Higher bike rental rates are observed in summer compared to winter.
+- Clear days see more bike rentals than snowy or rainy days.
+- Temperature range from 22°C to 25°C has higher bike demand.
+- The dataset's time-dependent nature means factors like temperature, wind speed, and solar radiation may vary, affecting model performance. Continuous learning and adaptation to new advancements in machine learning are essential.
+
+## Future Work
+- Explore additional features and data sources to enhance model accuracy.
+- Continuously update the model with new data to maintain performance.
+- Investigate real-time prediction capabilities for better operational integration.
